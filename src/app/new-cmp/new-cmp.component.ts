@@ -1,18 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { ApiService } from '../apiservice';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-new-cmp',
   templateUrl: './new-cmp.component.html',
   styleUrls: ['./new-cmp.component.css']
 })
+@Injectable()
 export class NewCmpComponent implements OnInit {
 
-  names:any;
+  patientList:any;
+  selectedPatient:any;
 
-  constructor() { }
+  constructor(
+    private api: ApiService) { }
 
   ngOnInit() {
-    this.names = [{"Name":"Abcd","Country":"India"},{"Name":"Xyz","Country":"Germany"}]
+    this.api.getAll();
+    this.patientList = [{"Id":"1","Name":"Abcd","Country":"India"},{"Id":"2","Name":"Xyz","Country":"Germany"}];
+    this.selectedPatient = {"Id":"0","Name":"","Country":""};
+  }
+
+  showPatientDetails(patientId:String) {
+    this.selectedPatient = _.find(this.patientList, {"Id":patientId});
+    console.log(this.selectedPatient);
   }
 
 }

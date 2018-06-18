@@ -3,16 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NewCmpComponent } from './new-cmp/new-cmp.component';
+import { ApiService } from './apiservice';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewCmpComponent
   ],
-  imports: [
+  imports: [HttpClientModule ,
     BrowserModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [NewCmpComponent]
 })
 export class AppModule { }
