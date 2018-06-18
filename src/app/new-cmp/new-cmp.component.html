@@ -5,8 +5,9 @@
       </div>
     </div>
     <div class="row p-3">
-      <div class="col-lg-4 col-md-5 border border-primary border-top-0 border-left-0 border-bottom-0">
-          <table>
+      <div class="col-lg-4 col-md-5 border border-primary border-top-0 border-left-0 border-bottom-0"
+            style="height:500px;overflow-y: auto;">
+          <table class="table-hover table-bordered">
             <thead>
               <tr>
                 <td>Patient Name</td>
@@ -16,15 +17,29 @@
             </thead>
             <tbody>
               <tr *ngFor="let x of patientList">
-                <td>{{x.Name}}</td>
+                <td class="align-top justify-content-lg-center">{{x.Name}}</td>
                 <td>{{x.Country}}</td>
-                <td><button class="btn btn-primary" (click)="showPatientDetails(x.Id)">View</button></td>
+                <td class="p-2"><button class="btn btn-primary" (click)="showPatientDetails(x.Id)">View</button></td>
               </tr>
             </tbody>
           </table>
       </div>
       <div class="col-lg-8 col-md-7">
-        {{this.selectedPatient.Name}}
+        <div class="container">
+          <div class="row">
+            <table class="border-0">
+              <tbody>
+                <tr>
+                  <td class="border-0">Patient Name: </td>
+                  <td class="border-0 font-weight-bold">{{this.selectedPatient.Name}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="row">
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
