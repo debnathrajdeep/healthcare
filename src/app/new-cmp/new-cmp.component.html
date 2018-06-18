@@ -1,20 +1,264 @@
-<div class="container" style="background-color: aqua;">
+<nav class="navbar fixed-top navbar-light" style="color: whitesmoke;background-color: #2780e3; height: auto;">
+    <h1 style="text-align: center; width: 100%">Pareto Healthcare Call list CRM</h1>
+    
+
+    <form class="form-inline">
+            <a href="#" style="text-align: right; color: whitesmoke; padding-bottom: 15px">Welcome, Sathappan</a>
+        </form>
+
+</nav>
+
+<br>
+
+<div class="col-md-12">
+
+    <br>
+</div>
+<div class="container" style="max-width: 100%;">
     <div class="row">
-      <div class="col-md-6">
-          <table>
-            <tr *ngFor="let x of names">
-              <td>
-                <a href="#" (click)="eventEmitClick($event)">
-                  {{ x.Name }}
-                </a>
-              </td>
-              <td>{{ x.Country }}</td>
-            </tr>
-          </table>
-      </div>
-      <div class="col-md-6">
-        ABCD1
-      </div>
+        <div class="col-md-4">
+            <div class="styled-select blue semi-square">
+                <select>
+                    <option style="color: whitesmoke;background-color: #2780e3;">Select an Location</option>
+                    <option style="color: whitesmoke;background-color: #2780e3;">Mumbai</option>
+                    <option style="color: whitesmoke;background-color: #2780e3;">Chennai</option>
+                </select>
+            </div>
+            <br>
+            <div class="card">
+                <div class="card-body" style="padding-left: 10px;padding-right: 10px">
+                    <table class="table" id="table">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Name</th>
+                                <th>Location</th>
+                                <th>Source</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class='clickable-row'>
+                                <th scope="row">1</th>
+
+                                <td>Madhu</td>
+                                <td>Chennai</td>
+                                <td>Clicked</td>
+                                <td>10:00 PM</td>
+                            </tr >
+                            <tr class='clickable-row'>
+                                <th scope="row">2</th>
+
+                                <td>Ananth</td>
+                                <td>Chennai</td>
+                                <td>Filled</td>
+                                <td>10:00 PM</td>
+                            </tr>
+                            <tr class='clickable-row'>
+                                <th scope="row">3</th>
+
+                                <td>Chaitanya</td>
+                                <td>Chennai</td>
+                                <td>Clicked</td>
+                                <td>10:00 PM</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header primary-color lighten-1 white-text">Script</div>
+                <div class="card-body">
+                    <br>
+                    <p class="card-text" style="padding-left: 10px;padding-right: 15px">This call is in continuation of the interest that you had expressed on the diabetic communication, that
+                        we sent for
+                        <b>Mr. Madhu</b> yesterday. I believe that you are Mr. Madhu. Is be a good time to speak to you ?
+                    </p>
+                    <p class="card-text" style="padding-left: 10px;padding-right: 15px">Thank you. Our records shows that your last blood test done with us was on
+                        <b>13 months</b> before, in May 2018. Sone of the tests like
+                        <b>HbA1c</b>, a, b, c etc and the results were a bit abnormal. Have you taken any test after that ?
+                        yes / no
+                    </p>
+                    <p class="card-text" style="padding-left: 10px;padding-right: 15px">Ask more questions
+                    </p>
+                    <p class="card-text" style="padding-left: 10px;padding-right: 15px">
+                        Explain why this package
+                        <br>
+                        <br> How the package works ?
+                        <br>
+                        <br> Last time,
+                        <b>Dr. Ravi</b> had referred; Do we share the test results with
+                        <b>Dr. Ravi</b>
+                    </p>
+
+
+                </div>
+            </div>
+            <div class="container" style="max-width: 100%; padding-left: 0px;padding-right: 0px;">
+                <h3>
+                    <strong>Questions to ask</strong>
+                </h3><hr>
+                <div class="col-md-7">
+                    <div class="card">
+                        <div class="card-body" style="padding-left: 10px;padding-right: 15px">
+
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Question</th>
+                                        <th>Answer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">How long diabetic
+                                        </th>
+
+                                        <td>Madhu</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Family history of diabetes
+                                        </th>
+
+                                        <td>Ananth</td>
+
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-body" style="padding-left: 10px;padding-right: 15px">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Communication</th>
+                                        <th>Outcomes</th>
+                                        <th>Dates</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Delayed SMS 1
+                                        </th>
+
+                                        <td>Madhu</td>
+                                        <td>Madhu</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">High risk SMS
+                                        </th>
+
+                                        <td>Ananth</td>
+                                        <td>Madhu</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="container" style="max-width: 100%; padding-left: 0px;padding-right: 0px;">
+                <h3>
+                    <strong>Last Visit Details</strong>
+                </h3><hr>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body" style="padding-left: 10px;padding-right: 15px">
+
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Home / Center</th>
+                                        <th>Reffered by</th>
+                                        <th>Bill</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body" style="padding-left: 10px;padding-right: 15px">
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Test</th>
+                                        <th>Value</th>
+                                        <th>Range</th>
+                                        <th>Significance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-  </div>
-  
+</div>
+
+<!--Footer-->
+<footer class="page-footer center-on-small-only">
+
+    
+        <!--Copyright-->
+        <div class="footer-copyright">
+            <div class="container-fluid">
+                © 2018 Copyright: <a href="#"> Pareto Healthcare </a>
+            </div>
+        </div>
+        <!--/.Copyright-->
+    </footer>
