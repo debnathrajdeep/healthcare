@@ -48,7 +48,7 @@ module.exports = "/*!\n * Bootstrap v4.0.0 (https://getbootstrap.com)\n * Copyri
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\r\n"
 
 /***/ }),
 
@@ -580,8 +580,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Raj\study\Sat\healthcare\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
-module.exports = __webpack_require__(/*! D:\Raj\study\Sat\healthcare\src\styles.css */"./src/styles.css");
+__webpack_require__(/*! D:\Master\Ananth\healthcare\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+module.exports = __webpack_require__(/*! D:\Master\Ananth\healthcare\src\styles.css */"./src/styles.css");
 
 
 /***/ })

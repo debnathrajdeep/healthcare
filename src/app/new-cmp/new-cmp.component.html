@@ -1,66 +1,214 @@
-<div class="container-fluid">
-    <div class="row border border-primary border-top-0 border-right-0 border-left-0">
-      <div class="col-lg-12 col-md-12 bg-light">
-        <h3 class="text-primary">Pareto</h3>  
-      </div>
-    </div>
-    <div class="row p-3">
-      <div class="col-lg-4 col-md-5 border border-primary border-top-0 border-left-0 border-bottom-0"
-            style="height:500px;overflow-y: auto;">
-            <div class="py-2">
-                <button class="btn btn-primary" (click)="getAllPatient()">Refresh</button>
-                &nbsp;
-                <span class="text-success">
-                    {{this.isUpdateSuccess}}
-                </span>
+<nav class="navbar fixed-top navbar-light" style="color: whitesmoke;background-color: #2780e3; height: auto;">
+  <ul class="navbar-nav mr-auto">  <h1 style="text-align: center; width: 100%">Pareto Healthcare Call list CRM</h1>     </ul>
+    <form class="form-inline">
+            <a href="#" style="text-align: right; color: whitesmoke; padding-bottom: 15px">Welcome, Sathappan</a>
+        </form>
+</nav>
+
+<br><br><br><br>
+<div class="container" style="max-width: 100%;">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="styled-select blue semi-square">
+                <select>
+                    <option style="color: whitesmoke;background-color: #2780e3;">Select an Location</option>
+                    <option style="color: whitesmoke;background-color: #2780e3;">Mumbai</option>
+                    <option style="color: whitesmoke;background-color: #2780e3;">Chennai</option>
+                </select>
             </div>
-          <table class="table-hover table-bordered">
-            <thead>
-              <tr>
-                <td class="align-middle text-center p-2 font-weight-bold">Patient Name</td>
-                <td class="align-middle text-center p-2 font-weight-bold">Time</td>
-                <td colspan="2" class="align-middle text-center p-2 font-weight-bold">Action</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let x of patientList">
-                <td class="align-middle text-center p-2">{{x.Name}}</td>
-                <td class="p-2">{{x.Time}}</td>
-                <td class="p-2"><button class="btn btn-primary" (click)="showPatientDetails(x.Id)">View</button></td>
-                <td class="p-2"><button class="btn btn-outline-primary" (click)="close(x.Id)">Close</button></td>
-              </tr>
-            </tbody>
-          </table>
-      </div>
-      <div class="col-lg-8 col-md-7">
-        <div class="container">
-          <div class="row" style="height: 300px;">
-            <table class="border-0">
-              <tbody>
-                <tr>
-                  <td class="border-0">Patient Name: </td>
-                  <td class="border-0 font-weight-bold">{{this.selectedPatient.Name}}</td>
-                </tr>
-                <tr>
-                  <td class="border-0">Call details: </td>
-                  <td class="border-0 text-primary">{{this.selectedPatient.CallDetails}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="row">
-            <div class="col-lg-12 form-group">
-                <form action="">
-                  <label for="comment" class="font-weight-bold">Comment:</label>
-                  <textarea class="form-control" name="Comments" cols="20" rows="5"
-                  [(ngModel)]="this.selectedPatient.Comments"></textarea>
-                  <button class="btn btn-primary mt-1 float-lg-right float-md-none mx-auto"
-                    (click)="saveComments()">Save</button>
-                </form>
+            <br>
+            <div class="card">
+                <div class="card-body" style="padding-left: 10px;padding-right: 10px">
+          <div class="table-responsive">          <table class="table" id="table">
+                        <thead>
+                            <tr>
+                                <th>ParetoID</th>
+                                <th>Name</th>
+                                <th>Location</th>
+                                <th>Source</th>
+                                <th>Time</th>
+                                <th colspan="2" class="align-middle text-center p-2 font-weight-bold">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let x of patientList">
+                                <td>{{x.ParetoID}}</td>
+                                <td>{{x.Name}}</td>
+                                <td>{{x.Location}}</td>
+                                <td><select (onchange)="saveComments()"><option value="{{x.Source}}">{{x.Source}}</option>
+                                  <option value="Done">Done</option></select></td>
+                                <td>{{x.Time}}</td>
+                                <td class="p-2"><button type="button" class="btn btn-primary" (click)="showPatientDetails(x.ParetoID)">View</button></td>
+                                <td class="p-2"><button type="button" class="btn btn-elegant" (click)="close(x.ParetoID)">Close</button></td>
+                            </tr >
+                        </tbody>
+                    </table>
+                </div>  </div>
             </div>
-          </div>
         </div>
-      </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header primary-color lighten-1 white-text">Script</div>
+                <div class="card-body">
+                    <br>
+                    <p class="card-text" style="padding-left: 10px;padding-right: 15px">This call is in continuation of the interest that you had expressed on the diabetic communication, that
+                        we sent for
+                        <b>{{this.selectedPatient.Name}}</b> yesterday. I believe that you are Mr. Madhu. Is be a good time to speak to you ?
+                    </p>
+                    <p class="card-text" style="padding-left: 10px;padding-right: 15px">Thank you. Our records shows that your last blood test done with us was on
+                        <b>13 months</b> before, in May 2018. Sone of the tests like
+                        <b>HbA1c</b>, a, b, c etc and the results were a bit abnormal. Have you taken any test after that ?
+                        yes / no
+                    </p>
+                    <p class="card-text" style="padding-left: 10px;padding-right: 15px">Ask more questions
+                    </p>
+                    <p class="card-text" style="padding-left: 10px;padding-right: 15px">
+                        Explain why this package
+                        <br>
+                        <br> How the package works ?
+                        <br>
+                        <br> Last time,
+                        <b>Dr. Ravi</b> had referred; Do we share the test results with
+                        <b>Dr. Ravi</b>
+                    </p>
+
+
+                </div>
+            </div>
+            <div class="container" style="max-width: 100%; padding-left: 0px;padding-right: 0px;">
+                <h3>
+                    <strong>Questions to ask</strong>
+                </h3><hr>
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-body" style="padding-left: 10px;padding-right: 15px">
+
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Question</th>
+                                        <th>Answer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">How long diabetic
+                                        </th>
+
+                                        <td>-</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Family history of diabetes
+                                        </th>
+
+                                        <td>-</td>
+
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="card">
+                        <div class="card-body" style="padding-left: 10px;padding-right: 15px">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Communication</th>
+                                        <th>Outcomes</th>
+                                        <th>Dates</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr  *ngFor="let x of communicationList">
+                                        <th scope="row">{{x.Communication}}</th>
+                                        <td>{{x.Outcomes}}</td>
+                                        <td>{{x.Date}}</td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="container" style="max-width: 100%; padding-left: 0px;padding-right: 0px;">
+                <h3>
+                    <strong>Last Visit Details</strong>
+                </h3><hr>
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-body" style="padding-left: 10px;padding-right: 15px">
+
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Home / Center</th>
+                                        <th>Reffered by</th>
+                                        <th>Bill</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let x of visitsList">
+                                        <td>{{x.Date}}</td>
+                                        <td>{{x.Center}}</td>
+                                        <td>{{x.Referred_By}}</td>
+                                        <td>{{x.Bill}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="card">
+                        <div class="card-body" style="padding-left: 10px;padding-right: 15px">
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Test</th>
+                                        <th>Value</th>
+                                        <th>Range</th>
+                                        <th>Significance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let x of valuesList">
+                                        <td>{{x.Date}}</td>
+                                        <td>{{x.Test}}</td>
+                                        <td>{{x.Value}}</td>
+                                        <td>{{x.Range}}</td>
+                                        <td>{{x.Significance}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-  </div>
-  
+    </div>
+    <footer class="page-footer center-on-small-only">
+
+
+            <!--Copyright-->
+            <div class="footer-copyright">
+                <div class="container-fluid">
+                    © 2018 Copyright: <a href="#"> Pareto Healthcare </a>
+                </div>
+            </div>
+            <!--/.Copyright-->
+        </footer>

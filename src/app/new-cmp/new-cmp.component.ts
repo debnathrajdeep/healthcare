@@ -11,16 +11,20 @@ import * as _ from 'lodash';
 @Injectable()
 export class NewCmpComponent implements OnInit {
 
-  
   patientList:any;
   selectedPatient:any;
   isUpdateSuccess:String;
-
+  communicationList:any;
+  visitsList:any;
+  valuesList:any;
   constructor(
     private api: ApiService) { }
 
   ngOnInit() {
     this.getAllPatient();
+    this.getAllCommunication();
+    this.getAllVisits();
+    this.getAllValues();
   }
 
   getAllPatient(): any {
@@ -28,34 +32,49 @@ export class NewCmpComponent implements OnInit {
     this.api.getAll()
     .subscribe(res => this.patientList = res,
         error => console.log(`Server error: ${error.status} - Details: ${error.error}`));
-    
-
     this.selectedPatient = {"Id":"0","Name":"","Country":""};
   }
-
+  getAllCommunication(): any {
+    this.isUpdateSuccess = "";
+    this.api.getAllCommunication()
+    .subscribe(res => this.communicationList = res,
+        error => console.log(`Server error: ${error.status} - Details: ${error.error}`));
+  // this.selectedPatient = {"Id":"0","Name":"","Country":""};
+  }
+  getAllVisits(): any {
+    this.isUpdateSuccess = "";
+    this.api.getAllVisits()
+    .subscribe(res => this.visitsList = res,
+        error => console.log(`Server error: ${error.status} - Details: ${error.error}`));
+  // this.selectedPatient = {"Id":"0","Name":"","Country":""};
+  }
+  getAllValues(): any {
+    this.isUpdateSuccess = "";
+    this.api.getAllValues()
+    .subscribe(res => this.valuesList = res,
+        error => console.log(`Server error: ${error.status} - Details: ${error.error}`));
+  // this.selectedPatient = {"Id":"0","Name":"","Country":""};
+  }
   showPatientDetails(patientId:String) {
-    this.selectedPatient = _.find(this.patientList, {"Id":patientId});
+    this.selectedPatient = _.find(this.patientList, {"ParetoID":ParetoID});
     console.log(this.selectedPatient);
   }
-
   saveComments(){
     this.isUpdateSuccess = "updating...";
     console.log(this.selectedPatient);
-    let formsBody = "id=" + this.selectedPatient.Id + "&iscompleted=0&comments=" + this.selectedPatient.Comments;
+    let formsBody = "ParetoID=" + this.selectedPatient.ParetoID + "&iscompleted=0&comments=" + this.selectedPatient.Source;
     this.api.save(formsBody)
     .subscribe(res => {
       console.log(res);
       this.isUpdateSuccess = "updated successfully";
     },
         error => console.log(`Server error: ${error.status} - Details: ${error.error}`));
-    
   }
-
   close(patientId:String){
     this.isUpdateSuccess = "updating...";
-    let closePatient = _.find(this.patientList, {"Id":patientId});
+    let closePatient = _.find(this.patientList, {"ParetoID":ParetoID});
     console.log(closePatient);
-    let formsBody = "id=" + closePatient.Id + "&iscompleted=1&comments=" + closePatient.Comments;
+    let formsBody = "ParetoID=" + closePatient.ParetoID + "&iscompleted=1&comments=" + closePatient.Source;
     this.api.save(formsBody)
     .subscribe(res => {
       console.log(res);
@@ -63,7 +82,6 @@ export class NewCmpComponent implements OnInit {
       this.isUpdateSuccess = "updated successfully";
     },
         error => console.log(`Server error: ${error.status} - Details: ${error.error}`));
-    
   }
 
 }
