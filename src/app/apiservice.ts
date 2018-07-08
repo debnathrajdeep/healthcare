@@ -24,9 +24,12 @@ export class ApiService {
   public getAllValues() {
     return this.http.get("http://www.paretohealthcare.com/callcenter/getValues.php");
   }
+  public getAllScript() {
+    return this.http.get("http://www.paretohealthcare.com/callcenter/getScript.php");
+  }
 
   public save(formsBody:String) {
-    let url = "http://www.paretohealthcare.com/callcenter/postPatient.php";
+    let url = "http://www.paretohealthcare.com/callcenter/getCommunication.php";
     let httpHeaders = new HttpHeaders({
         'Content-Type' : 'application/x-www-form-urlencoded'
    });
@@ -37,5 +40,16 @@ export class ApiService {
        }
    );
   }
-
+  public Communication(formsBody:String) {
+    let url = "http://www.paretohealthcare.com/callcenter/getCommunication.php";
+    let httpHeaders = new HttpHeaders({
+        'Content-Type' : 'application/x-www-form-urlencoded'
+   });
+   return this.http.post(url, formsBody,
+       {
+         headers: httpHeaders,
+         observe: 'response'
+       }
+   );
+  }
 }

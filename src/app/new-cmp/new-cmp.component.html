@@ -9,11 +9,12 @@
 <div class="container" style="max-width: 100%;">
     <div class="row">
         <div class="col-md-6">
-            <div class="styled-select blue semi-square">
-                <select>
-                    <option style="color: whitesmoke;background-color: #2780e3;">Select an Location</option>
-                    <option style="color: whitesmoke;background-color: #2780e3;">Mumbai</option>
-                    <option style="color: whitesmoke;background-color: #2780e3;">Chennai</option>
+            <div class="select semi-square">
+                <select id='filterText' style='display:inline-block' onchange='filterText()'>
+                    <option   disabled selected>Select an Location</option>
+                    <option value='all'>All</option>
+                    <option  value="Mumbai">Mumbai</option>
+                    <option  value="Chennai">Chennai</option>
                 </select>
             </div>
             <br>
@@ -30,28 +31,32 @@
                                 <th colspan="2" class="align-middle text-center p-2 font-weight-bold">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr *ngFor="let x of patientList">
+                        <tbody id="myTable">
+                            <tr class="content" *ngFor="let x of patientList">
                                 <td>{{x.ParetoID}}</td>
                                 <td>{{x.Name}}</td>
                                 <td>{{x.Location}}</td>
-                                <td><select (onchange)="saveComments()"><option value="{{x.Source}}">{{x.Source}}</option>
-                                  <option value="Done">Done</option></select></td>
-                                <td>{{x.Time}}</td>
-                                <td class="p-2"><button type="button" class="btn btn-primary" (click)="showPatientDetails(x.ParetoID)">View</button></td>
+                                <td><select (onchange)="saveComments()">
+                                    <option value="{{x.Source}}">{{x.Source}}</option>
+                                    <option value="Done">Done</option>
+                                    </select></td>
+                                          <td>{{x.Time}}</td>
+                                <td class="p-2"><button type="button" class="btn btn-primary" (click)="showPatientDetails(x.ParetoID); saveComments(); getAllCommunication(this.selectedPatient.ParetoID); getAllVisits(); getAllValues()">View</button></td>
                                 <td class="p-2"><button type="button" class="btn btn-elegant" (click)="close(x.ParetoID)">Close</button></td>
                             </tr >
                         </tbody>
                     </table>
                 </div>  </div>
             </div>
+
         </div>
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header primary-color lighten-1 white-text">Script</div>
-                <div class="card-body">
+                <div class="card-body" >
                     <br>
-                    <p class="card-text" style="padding-left: 10px;padding-right: 15px">This call is in continuation of the interest that you had expressed on the diabetic communication, that
+
+                 <p class="card-text" style="padding-left: 10px;padding-right: 15px">This call is in continuation of the interest that you had expressed on the diabetic communication, that
                         we sent for
                         <b>{{this.selectedPatient.Name}}</b> yesterday. I believe that you are Mr. Madhu. Is be a good time to speak to you ?
                     </p>
@@ -66,13 +71,13 @@
                         Explain why this package
                         <br>
                         <br> How the package works ?
-                        <br>
+                        <br>{{this.selectedPatient.Location}}
                         <br> Last time,
                         <b>Dr. Ravi</b> had referred; Do we share the test results with
                         <b>Dr. Ravi</b>
                     </p>
-
-
+<div *ngFor="let x of scriptList">
+{{x.content}}</div>
                 </div>
             </div>
             <div class="container" style="max-width: 100%; padding-left: 0px;padding-right: 0px;">
@@ -126,7 +131,7 @@
                                 </thead>
                                 <tbody>
                                     <tr  *ngFor="let x of communicationList">
-                                        <th scope="row">{{x.Communication}}</th>
+                                        <th scope="row">{{this.communicationPatient.Communication}}</th>
                                         <td>{{x.Outcomes}}</td>
                                         <td>{{x.Date}}</td>
                                     </tr>
